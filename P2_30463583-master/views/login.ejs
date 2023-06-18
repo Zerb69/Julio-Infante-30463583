@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="<%=CLIENT_ID%>">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Login</title>
+    <link rel="stylesheet" href="/stylesheets/stylelogin.css">
+</head>
+<body>
+    <main>
+        <h1>Iniciar Sesión</h1>
+
+        <p>Inicia sesión para continuar</p>
+
+        <section class="login">
+            <form action="/login" method="post" name="form" autocomplete="off">
+                <div>
+                    <label for="email">Correo</label>
+                    <input name="email" type="email" value="<%=info.email%>" placeholder="correo@dominio.com" required>
+                </div>
+                <div>
+                    <label id="pass" for="pass">Clave </label>
+                    <input name="pass" type="password" value="<%=info.pass%>" placeholder="******" required>
+                </div>
+                <div class="btn">
+                    <input id="btnLogin" type="submit" value="Iniciar">
+                </div>
+                <p> O </p>
+                <div class="g-signin2 GoogleLogin" data-onsuccess="onSignIn" data-theme="dark"></div>
+                <div class="error">
+                    <p name="msg" class="msg"><%=M%></p>
+                    <input id="oauth" name="oauth" value="<%=info.oauth%>" hidden>
+                    <input id="google" name="google" value="<%=info.google%>" hidden>
+                </div>
+                <div>
+                    <a id="signout" href="/" onclick="signOut();">Desconectar</a>
+                </div>
+            </form>
+        </section>
+        <footer>
+        <div class="details">
+            <p>AC GAMES ©2022</p>
+            <p>T&eacute;rminos y pol&iacute;ticas de privacidad</p>
+            <p>Curriculum Vitae</p>
+          </div>
+        </footer>
+    </main>
+    <script>
+        let input_OAuth = document.querySelector("#oauth"),
+        usingGoogle = document.querySelector("#google"),
+        signout = document.querySelector("#signout");
+        function onSignIn(googleUser) {
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        input_OAuth.value = id_token;
+        if(input_OAuth.value != ""){
+            
+            usingGoogle.value = "Si"
+            document.form.submit();
+        }else{
+            input_OAuth.value = "";
+            usingGoogle.value = "No"
+            signout.style.visibility = "visible";
+        }
+
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+            console.log('User signed out.');
+            });
+        }
+    </script>
+</body>
+</html>

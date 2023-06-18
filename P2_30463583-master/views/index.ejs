@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+
+
+  <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<%=ANALITYCS_KEY%>"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '<%=ANALITYCS_KEY%>');
+    </script>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  
+  <meta charset = "iso-8859-1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#1f2732"/>
+  <meta property="og:title" content="C.V Anthony Carrillo"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ac-games.herokuapp.com" />
+  <meta property="og:image:url" content="https://github.com/Anthonyzok521/P2_30659229/blob/master/public/images/CV.png?raw=true" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="300" />
+  <meta property="og:image:alt" content="Portada" />
+  <meta property="og:description" content="Curriculum Vitae de Anthony Carrillo Estudiante de la Universidad Nacional Experimental Rómulo Gallegos (UNERG)." />
+
+  <title>Curriculum Vitae (cv) Anthony Carrillo</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+
+ <!--   Google Tag Manager (noscript)
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%=ANALITYCS_KEY%>"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+   End Google Tag Manager (noscript)  -->
+
+  <div class="modal">
+    <h3><%=__('title_CAPTCHA')%></h3>
+    <p><%=__('msg_CAPTCHA')%></p>
+    <button id="modal_OK">Ok</button>
+  </div>
+
+  <form name="form" action="/translated" method="post" class="translater">
+      <a class="containerT" onclick="submit();">
+      <p class="esen"><%=__('esen_btn_value')%></p>
+      <img src="<%=IMG_TRANSLATE%>" alt="Español">
+      </a>
+  </form>
+
+  <div class="container">
+    <div class="title">
+      <img src="images/ACGAMES.jpg" width="130px" height="130px">
+      <div class="resume">
+        <h1>Anthony Carrillo</h1>
+        <small><%=__('MyProfession')%></small>
+        <p><%=__('Resume')%></p> 
+      </div>
+    </div>
+
+    <main>
+    <section class="skill">
+      <h2><%=__('Skills')%></h2>
+      <ul>
+        <li><i class="point">• </i><%=__('skill_1')%></li>
+        <li><i class="point">• </i><%=__('skill_2')%></li>
+        <li><i class="point">• </i><%=__('skill_3')%></li>
+        <li><i class="point">• </i><%=__('skill_4')%></li>
+        <li><i class="point">• </i><%=__('skill_5')%></li>
+        <li><i class="point">• </i>C++, C# y Python.
+        <li><i class="point">• </i>MySQL.</li>
+        <li><i class="point">• </i>GIMP, Photoshop e Inkscape.</li>
+      </ul>
+    </section>
+
+    <section class="exp">
+      <h2><%=__('Experience')%></h2>
+      <b><%=__('MyExperience')%></b><br>
+      <small><i><%=__('Bussines')%></i></small>
+      <p><%=__('ExperienceResume')%></p>
+    </section>
+
+    <section class="educt">
+      <h2><%=__('Education')%></h2>
+      <ul>
+      <li><i class="point">• </i><%=__('high_school')%></li>
+      <li><i class="point">• </i><%=__('calix')%></li>
+    </ul>
+  </section>
+
+    <section class="contact">
+      <h2><%=__('Contact')%></h2>
+      <p><b><%=__('Number')%> </b><i>0412-1438904</i></p>    
+      <ul>
+        <li><i class="point">• </i><b>Correo: </b><i><a href="https://anthonyzok521@gmail.com">anthonyzok521@gmail.com</a></i></li>
+        <li><i class="point">• </i><b>Twitter: </b><i><a href="https://twitter.com/AC_GAMES_">@AC_GAMES_</a></i></li>
+        <li><i class="point">• </i><b>Itch.io: </b><i><a href="https://acgames-developer.itch.io">https://acgames-developer.itch.io</a></i></li>
+      </ul>
+    </section>
+  </main>
+  </div >
+
+  <footer>
+    <form action="/" method="post">
+      <input id="name" name="name" type="text" placeholder="<%=__('input_name')%>" value="<%=datas.name%>" required>
+      <input id="email" name="email" type="email" placeholder="<%=__('input_email')%>" value="<%=datas.email%>" required>
+      <br>
+      <textarea name="message" value="<%=datas.message%>"><%=__('textarea')%></textarea>
+      <input type="submit" value="<%=__('Send')%>" class="botonEnviar">
+      <input id="ip" type="hidden" name="ip" value="<%=datas.ip%>">
+      <input id="date" type="hidden" name="date" value="<%=datas.date%>">
+      <input id="time" type="hidden" name="time" value="<%=datas.time%>">
+      <input id="country" type="hidden" name="country" value="<%=datas.country%>">
+
+      <div id="html_element">
+        <div class="g-recaptcha" data-sitekey="<%=CAPTCHA_KEY%>"></div>
+      </div>
+    </form>
+    <div class="details">
+      <p>AC GAMES ©2022</p>
+      <p><%=__('footer')%></p>
+      <p>Curriculum Vitae</p>
+    </div>
+  </footer>
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+        let xmlhttp = new XMLHttpRequest();
+        let url = "https://api.ipfind.com/me?auth=<%=API_KEY%>";
+
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+              let result = JSON.parse(this.responseText);
+              let _continent = result.continent;
+              let _country = result.country;
+              let _city = result.city;
+              let input_country = document.getElementById('country');
+              input_country.value = _continent +", "+ _country +", "+ _city;
+            }
+        };
+
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+  </script>
+  <script>
+    let modal = document.querySelector('.modal');
+    let ok = document.querySelector('#modal_OK');
+    let res = "<%=res_cap%>";
+    modal.style.display = "none";
+    if(res == "false"){
+    modal.style.display = "flex";
+    }else if (res != "false"){
+      modal.style.display = "none";
+    }
+
+    ok.addEventListener('click', ()=>{
+      modal.style.display = "none";
+      res = "";
+    });
+
+  </script>
+  <script src="/javascripts/translateDocument.js"></script>
+</body>
+</html>
